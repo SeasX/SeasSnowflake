@@ -42,7 +42,9 @@ SeasSnowflake
 ##### 注意事项：
 
 1、注意PHP多进程的问题、需自行传入workerid 跟dataceter_id（开启redis 过滤器可省略这一步）
+
 2、时钟回退问题
+
 3、多个服务聚合数据时仍然会有重复，比如：单据系统分了四个不同服务、每个服务一个数据库。 当对四个服务的数据进行聚合处理时、就会出现重复单据ID。跨系统的数据做聚合也会出现相同问题（该问题在生产环境出现过、如果有相似业务场景需要留意）
 
 ### 过滤器版本特点:
@@ -91,6 +93,8 @@ echo ' and memory usage: ' . memory_get_usage() . 'byte';
 cost:0.731212 second  and memory usage: 387520byte
 ---- FAILED
 ```
+
+
 ```php
 2、分别测试 生成10 万20万、30万、50万id
 ---- ACTUAL OUTPUT
@@ -104,6 +108,7 @@ make 500000 id=================
 cost:1.422977 second  and memory usage: 395816byte
 ---- FAILED
 ```
+
 3、完成基础测试代码：[More examples](https://github.com/Rock-liyi/SeasSnowflake/blob/master/tests/benchmark.phpt)
 
 
