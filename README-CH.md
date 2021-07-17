@@ -151,6 +151,15 @@ array(6) {
 ```
 
 #### [More examples](https://github.com/Rock-liyi/SeasSnowflake/blob/master/tests/003.phpt)
+
+
+### 特别说明
+本扩展是Twitter 的雪花ID的变种实现，算法原理版权来自Twitter , 在实现的过程中，参考了大量网上教程，主要参考的文章在README跟源码中均有注释，并在此向作者表达敬意，特别感谢在刚接触雪花算法时、hyperf 团队李铭昕对作者的一些疑惑解答
+ 
+开始是准备采用PHP语言来实现，但是实现的过程中发现并没有找到很好的PHP进程内存缓存ID的方式，转而采用了PHP扩展的形式，生成的ID参考了hyperf 的格式，故可跟hyperf 的雪花ID组件无缝替换。
+
+Redis 过滤器方式的雪花变种算法为SeasX 团队原创、如本扩展为你解决了一些问题、或提供了一些解决问题的思路，也请在项目中保留本代码库的链接。
+
 ### 支持
 SeasX 团队 
 
