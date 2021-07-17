@@ -4,7 +4,7 @@
 # 简介
 Snowflake id 是一个分布式雪花生成器，由 Twitter在2010 年提出， 可保证在分布式场景下生成唯一的 ID 号。其优点是：高性能，低延迟；按时间有序，特别适合需要进行分表的业务场景，可通过degenerate方法 反解出生成的时间
 
-SeasSnowflake 是Snowflake 的变种算法,支持20位的雪花id 生成,解决Snowflake分布式大规模场景下出现的时钟回退, k8s docker 部署下的节点IP动态变化等问题，支持PHP7 PHP8 版本
+SeasSnowflake 是Snowflake 的变种算法,支持20位的雪花id 生成,解决Snowflake出现的时钟回退,分布式场景下 k8s docker 部署下的节点飘逸、docker重启、IP动态变化导致的ID生成重复等问题，支持PHP7 PHP8 版本
 
 
 ### 算法实现：
@@ -54,7 +54,9 @@ SeasSnowflake 提供了常规版本
 业务场景：微服务、分布式场景、所有业务的id 均保证不会出现重复。
 
 说明：为什么使用Redis 而不用mysql, 原因是作者认为雪花id 本身是按照时间递增的,除了时间回退、节点重复问题，历史已经生成的ID不会再重复生成，持久化保留ID意义并不大，如果您想用mysql来存储，欢迎给我们提PR，其它通过mysql 实现的变种算法可参考:
+
 [美团雪花变种算法实现](https://github.com/zhuzhong/idleaf)
+
 [百度雪花变种算法实现](https://github.com/baidu/uid-generator)
 
 
