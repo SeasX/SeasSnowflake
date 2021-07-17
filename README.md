@@ -58,7 +58,7 @@ make 500000 id=================
 cost:1.422977 second  and memory usage: 395816byte
 ---- FAILED
 ```
-3、Benchmark code：[More examples](https://github.com/Rock-liyi/SeasSnowflake/blob/master/tests/benchmark.phpt)
+3、Benchmark code：[More examples](./tests/benchmark.phpt)
 
 
 ### How to use it：
@@ -104,7 +104,7 @@ array(6) {
 }
 ```
 
-#### [More examples](https://github.com/Rock-liyi/SeasSnowflake/blob/master/tests/003.phpt)
+#### [More examples](./tests/003.phpt)
 
 ## Support
 SeasX Group 
