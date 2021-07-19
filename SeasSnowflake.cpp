@@ -31,10 +31,10 @@ extern "C" {
 #include <iostream>
 #include <map>
 #include <sstream>
-#include "./Core/Timer.h"
-#include "./Core/IdWorker.h"
+#include "./src/Timer.h"
+#include "./src/IdWorker.h"
 
-using namespace SeasSnowFlake::Core;
+using namespace SeasSnowFlake::Src;
 // using namespace clickhouse;
 using namespace std;
 
@@ -67,10 +67,13 @@ ZEND_BEGIN_ARG_INFO_EX(SeasSnowflake_degenerate, 0, 0, 1)
 ZEND_ARG_INFO(0, id)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_INFO_EX(seasSnowflake_get_version_arginfo, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
 /*   */
 const zend_function_entry SeasSnowflake_functions[] =
 {
-    PHP_FE(SeasSnowflake_version,	NULL)
+    PHP_FE(SeasSnowflake_version,	seasSnowflake_get_version_arginfo)
     PHP_FE_END
 };
 /* }}} */
@@ -142,7 +145,7 @@ PHP_MINFO_FUNCTION(SeasSnowflake)
     php_info_print_table_start();
     php_info_print_table_header(2, "SeasSnowflake support", "enabled");
     php_info_print_table_row(2, "Version", PHP_SEASSNOWFLAKE_VERSION);
-    php_info_print_table_row(2, "Author", "SeasX Group[email: rock.li@gmail.com]");
+    php_info_print_table_row(2, "Author", "SeasX Group[email: rock@php.net]");
     php_info_print_table_end();
 
     DISPLAY_INI_ENTRIES();
@@ -195,6 +198,7 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, __construct)
 
     try
     {
+#if PHP_VERSION_ID < 80000
         if (php_array_get_value(_ht, "worker_id", value))
         {
             convert_to_long(value);
@@ -206,10 +210,34 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, __construct)
             convert_to_long(value);
             zend_update_property_long(SeasSnowflake_ce, this_obj, "datacenter_id", sizeof("datacenter_id") - 1, Z_LVAL_P(value) TSRMLS_CC);
         }
+#else
+        if (php_array_get_value(_ht, "worker_id", value))
+        {
+            convert_to_long(value);
+            zend_object *workerObject;
+            workerObject=Z_OBJ_P(this_obj);
+            zend_update_property_long(SeasSnowflake_ce, workerObject, "worker_id", sizeof("worker_id") - 1, Z_LVAL_P(value) );
+        }
+
+        if (php_array_get_value(_ht, "datacenter_id", value))
+        {
+            convert_to_long(value);
+            zend_object *datecenterObject;
+            datecenterObject=Z_OBJ_P(this_obj);
+            zend_update_property_long(SeasSnowflake_ce, datecenterObject, "datacenter_id", sizeof("datacenter_id") - 1, Z_LVAL_P(value) );
+        }
+#endif
+
+        
     }
     catch (const std::exception& e)
     {
-        sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
+        #if PHP_VERSION_ID < 80000
+          sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
+        #else
+          sc_zend_throw_exception(NULL, e.what(), 0 );
+        #endif
+      
     }
 
     RETURN_TRUE;
@@ -235,7 +263,11 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, generate)
        uint64_t id=  idWorker.generate();
        RETVAL_LONG(id);
     }catch (const std::exception& e){
-        sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
+         #if PHP_VERSION_ID < 80000
+          sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
+        #else
+          sc_zend_throw_exception(NULL, e.what(), 0 );
+        #endif
     }
     
     return;
@@ -304,7 +336,11 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
 
         RETURN_ZVAL(&arr, 0, 1);
      } catch (const std::exception& e){
-        sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
+         #if PHP_VERSION_ID < 80000
+          sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
+        #else
+          sc_zend_throw_exception(NULL, e.what(), 0 );
+        #endif
     }
    return ;
  }

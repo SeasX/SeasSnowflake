@@ -1,5 +1,5 @@
-#ifndef CORE_TIMER_H_
-#define CORE_TIMER_H_
+#ifndef Src_TIMER_H_
+#define Src_TIMER_H_
 
 #include <chrono>
 
@@ -9,7 +9,7 @@ namespace SeasSnowFlake {
     * @brief 核心
     * 核心功能
     */
-    namespace Core {
+    namespace Src {
 
         /**
         * @brief 计时器类

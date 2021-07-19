@@ -62,8 +62,7 @@ if test "$PHP_SEASSNOWFLAKE" != "no"; then
   PHP_SUBST(SEASSNOWFLAKE_SHARED_LIBADD)
   PHP_ADD_LIBRARY(stdc++, 1, SEASSNOWFLAKE_SHARED_LIBADD)
   CXXFLAGS="$CXXFLAGS -Wall -Wno-unused-function -Wno-deprecated -Wno-deprecated-declarations -std=c++11"
-  SeasSnowflake_source_file="SeasSnowflake.cpp \
-        typesToPhp.cpp"
+  SeasSnowflake_source_file="SeasSnowflake.cpp"
 
   THIS_DIR=`dirname $0`
   PHP_NEW_EXTENSION(SeasSnowflake, $SeasSnowflake_source_file, $ext_shared,,-DZEND_ENABLE_STATIC_TSRMLS_CACHE=1)

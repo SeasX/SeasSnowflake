@@ -1,12 +1,12 @@
-#ifndef CORE_NONCOPYABLE_H_
-#define CORE_NONCOPYABLE_H_
+#ifndef Src_NONCOPYABLE_H_
+#define Src_NONCOPYABLE_H_
 
 
 //  Private copy constructor and copy assignment ensure classes derived from
 //  class noncopyable cannot be copied.
 
 namespace SeasSnowFlake {
-    namespace Core {
+    namespace Src {
 
         // protection from unintended ADL(Argument Dependent Lookup)
         namespace Noncopyable_ {

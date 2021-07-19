@@ -1,8 +1,8 @@
-#ifndef CORE_SINGLETON_H_
-#define CORE_SINGLETON_H_
+#ifndef Src_SINGLETON_H_
+#define Src_SINGLETON_H_
 
 namespace SeasSnowFlake {
-    namespace Core {
+    namespace Src {
 
         // boost/container/detail/singleton.hpp
         // http://blog.csdn.net/fullsail/article/details/8483106

@@ -12,7 +12,7 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:  SeasX Group <rock.li@gmail.com>                          |
+  | Author:  SeasX Group <rock@php.net>                          |
   +----------------------------------------------------------------------+
 */
 // PHP7.4 + 
@@ -121,7 +121,13 @@ static inline zval *sc_zend_hash_index_find(HashTable *ht, ulong h)
 static inline zval* sc_zend_read_property(zend_class_entry *class_ptr, zval *obj, const char *s, int len, int silent)
 {
     zval rv;
+#if PHP_VERSION_ID < 80000
     return zend_read_property(class_ptr, obj, s, len, silent, &rv);
+#else
+    zend_object *object;
+    object=Z_OBJ_P(obj);
+    return zend_read_property(class_ptr, object, s, len, silent, &rv);
+#endif
 }
 
 #define SC_HASHTABLE_FOREACH_START2(ht, k, klen, ktype, _val) zend_string *_foreach_key;\

@@ -18,7 +18,7 @@ namespace SeasSnowFlake {
     * @brief 核心
     * 核心功能
     */
-    namespace Core {
+    namespace Src {
 
         /**@项目说明 该项目C++ 实现参考如下，感谢以下作者的付出
          * @brief 分布式id生成类  
