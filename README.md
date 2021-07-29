@@ -15,7 +15,7 @@ this is because some languages don't support unsigned integers properly (Java an
 
 next 41 bits: milliseconds since custom epoch
 
-next 4 bits: region id
+next 4 bits: datacenter id
 
 next 10 bits: worker id
 
