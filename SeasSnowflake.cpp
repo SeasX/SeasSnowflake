@@ -79,21 +79,11 @@ const zend_function_entry SeasSnowflake_functions[] =
 /* }}} */
 
 
- /*要实现的方法的代码*/ 
 const zend_function_entry SeasSnowflake_methods[] =
 {
-
-    /**
-     * 第一个参数:类名
-     * 第二个参数:方法名
-     *  PHP_ME();
-     */
-   
-
-  
-       PHP_ME(SEASSNOWFLAKE_RES_NAME, __construct,   SeasSnowflake_construct, ZEND_ACC_PUBLIC | ZEND_ACC_CTOR)  // ZEND_ACC_CTOR (指定该方法为构造函数)
-       PHP_ME(SEASSNOWFLAKE_RES_NAME, generate,   SeasSnowflake_generate, ZEND_ACC_PUBLIC ) //把方法名设置为共有的
-       PHP_ME(SEASSNOWFLAKE_RES_NAME, degenerate,       SeasSnowflake_degenerate, ZEND_ACC_PUBLIC) //把方法名设置为共有的
+       PHP_ME(SEASSNOWFLAKE_RES_NAME, __construct,   SeasSnowflake_construct, ZEND_ACC_PUBLIC | ZEND_ACC_CTOR)  
+       PHP_ME(SEASSNOWFLAKE_RES_NAME, generate,   SeasSnowflake_generate, ZEND_ACC_PUBLIC )
+       PHP_ME(SEASSNOWFLAKE_RES_NAME, degenerate,       SeasSnowflake_degenerate, ZEND_ACC_PUBLIC) 
        PHP_FE_END
 };
 
@@ -108,7 +98,6 @@ PHP_MINIT_FUNCTION(SeasSnowflake)
 #else
     SeasSnowflake_ce = zend_register_internal_class_ex(&SeasSnowflake, NULL, NULL TSRMLS_CC);
 #endif
-    //zend_declare_property_long(SeasSnowflake, "port", strlen("port"), 9000, ZEND_ACC_PROTECTED TSRMLS_CC);
     SeasSnowflake_ce->ce_flags |= ZEND_ACC_FINAL;
     return SUCCESS;
 }
@@ -313,11 +302,7 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
 
     try
     {
-       uint64_t id_i = idWorker.stringToUINT64(id);
-        // zval *return_value;
-        // SC_MAKE_STD_ZVAL(return_value);//分配内存并将其地址赋值给变量
-        // array_init(return_value);//初始化一个空数组    
-    //     char * interval_name;  
+        uint64_t id_i = idWorker.stringToUINT64(id);
         uint64_t interval=idWorker.degenerateInterval(id_i);
         uint workerId=idWorker.degenerateWorkerId(id_i);
         uint sequence= idWorker.degenerateSequence(id_i);
