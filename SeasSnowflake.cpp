@@ -81,9 +81,9 @@ const zend_function_entry SeasSnowflake_functions[] =
 
 const zend_function_entry SeasSnowflake_methods[] =
 {
-       PHP_ME(SEASSNOWFLAKE_RES_NAME, __construct,   SeasSnowflake_construct, ZEND_ACC_PUBLIC | ZEND_ACC_CTOR)  
-       PHP_ME(SEASSNOWFLAKE_RES_NAME, generate,   SeasSnowflake_generate, ZEND_ACC_PUBLIC )
-       PHP_ME(SEASSNOWFLAKE_RES_NAME, degenerate,       SeasSnowflake_degenerate, ZEND_ACC_PUBLIC) 
+       PHP_ME(SEASSNOWFLAKE_RES_NAME, __construct, SeasSnowflake_construct, ZEND_ACC_PUBLIC | ZEND_ACC_CTOR)  
+       PHP_ME(SEASSNOWFLAKE_RES_NAME, generate, SeasSnowflake_generate, ZEND_ACC_PUBLIC )
+       PHP_ME(SEASSNOWFLAKE_RES_NAME, degenerate, SeasSnowflake_degenerate, ZEND_ACC_PUBLIC) 
        PHP_FE_END
 };
 
