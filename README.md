@@ -2,7 +2,7 @@
 English | [中文](./README-CH.md)
 
 # Introductions
-SeasSnowflake is a distributed unique ID generator inspired by Twitter's Snowflake.
+SeasSnowflake is a distributed unique ID generator inspired by [Twitter's Snowflake](https://blog.twitter.com/engineering/en_us/a/2010/announcing-snowflake).
 
 Parts of a snowflake ID:
 
