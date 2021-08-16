@@ -7,16 +7,16 @@
         PHP Extension for [ID generation]
     </description>
     <lead>
-        <name>Chitao Gao</name>
-        <user>neeke</user>
-        <email>neeke@php.net</email>
+        <name>Rock Li</name>
+        <user>rock</user>
+        <email>rock@php.net</email>
         <active>yes</active>
     </lead>
-    <date>2019-03-28</date>
+    <date>2021-08-16</date>
     <time>13:00:00</time>
     <version>
-        <release>0.1.0</release>
-        <api>0.1.0</api>
+        <release>1.0.0</release>
+        <api>1.0.0</api>
     </version>
     <stability>
         <release>stable</release>
