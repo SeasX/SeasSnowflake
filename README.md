@@ -4,6 +4,9 @@ English | [中文](./README-CH.md)
 # Introductions
 SeasSnowflake is a distributed unique ID generator inspired by [Twitter's Snowflake](https://blog.twitter.com/engineering/en_us/a/2010/announcing-snowflake).
 
+
+
+
 Parts of a snowflake ID:
 
 sign bit: will always be 0
@@ -12,12 +15,17 @@ this is because some languages don't support unsigned integers properly (Java an
 
 next 41 bits: milliseconds since custom epoch
 
-next 4 bits: datacenter id
-
-next 10 bits: worker id
+next 10 bits: sequence  id
 
 lowest 12 bits: sequence number
 ![avatar](https://img-blog.csdnimg.cn/20191009093154467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZseTkxMDkwNQ==,size_16,color_FFFFFF,t_70)
+
+How it Works
+Each time you generate an ID, it works, like this.
+
+A timestamp with millisecond precision is stored using 41 bits of the ID.
+Then the workid and datacent id is added in subsequent bits.
+Then the Sequence Number is added, starting at 0 and incrementing for each ID generated in the same millisecond. If you generate enough IDs in the same millisecond that the sequence would roll over or overfill then the generate function will pause until the next millisecond.
 
 
 ### Benchmark test：
