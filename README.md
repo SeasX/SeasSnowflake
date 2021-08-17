@@ -25,7 +25,7 @@ Each time you generate an ID, it works, like this.
 
 A timestamp with millisecond precision is stored using 41 bits of the ID.
 
-Then the workid and datacent id is added in subsequent bits.
+Then the work id and datacenter id is added in subsequent bits.
 
 Then the Sequence Number is added, starting at 0 and incrementing for each ID generated in the same millisecond. 
 
