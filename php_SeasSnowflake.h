@@ -12,7 +12,7 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:  SeasX Group <ahhhh.wang@gmail.com>                          |
+  | Author:  SeasX Group <rock@php.net>                          |
   +----------------------------------------------------------------------+
 */
 #ifdef __cplusplus
