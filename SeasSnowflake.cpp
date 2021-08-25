@@ -294,7 +294,7 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
     #else
     #undef IS_UNDEF
     #define IS_UNDEF Z_EXPECTED_LONG
-        ZEND_PARSE_PARAMETERS_START(1, 2)
+        ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_STRING(id, l_id)
         Z_PARAM_OPTIONAL
     //  Z_PARAM_ARRAY(params)
