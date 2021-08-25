@@ -59,8 +59,7 @@ ZEND_BEGIN_ARG_INFO_EX(SeasSnowflake_construct, 0, 0, 1)
 ZEND_ARG_INFO(0, parames)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(SeasSnowflake_generate, 0, 0, 1)
-ZEND_ARG_INFO(0, id)
+ZEND_BEGIN_ARG_INFO_EX(SeasSnowflake_generate, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(SeasSnowflake_degenerate, 0, 0, 1)
@@ -244,6 +243,10 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, generate)
     zval *worker_id = sc_zend_read_property(SeasSnowflake_ce, this_obj, "worker_id", sizeof("worker_id") - 1, 0);
     zval *datacenter_id = sc_zend_read_property(SeasSnowflake_ce, this_obj, "datacenter_id", sizeof("datacenter_id") - 1, 0);
 
+    if (zend_parse_parameters_none() == FAILURE)
+    {
+        return;
+    }
 
     idWorker.setDatacenterId(Z_LVAL_P(worker_id));
     idWorker.setWorkerId(Z_LVAL_P(datacenter_id));
