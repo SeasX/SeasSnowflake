@@ -53,6 +53,7 @@ typedef unsigned long ulong_t;
 
 #endif	/* PHP_SEASSNOWFLAKE_H */
 
+#include "main/php_config.h"
 /*
  * Local variables:
  * tab-width: 4

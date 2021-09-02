@@ -2,17 +2,17 @@
 <package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
     <name>SeasSnowflake</name>
     <channel>pecl.php.net</channel>
-    <summary>PHP Extension for [ID generation].</summary>
+    <summary> PHP Extension for [Distributed unique ID generator]</summary>
     <description>
-        PHP Extension for [ID generation]
+         SeasSnowflake is a distributed unique ID generator inspired by [Twitter's Snowflake](https://blog.twitter.com/engineering/en_us/a/2010/announcing-snowflake).
     </description>
     <lead>
-        <name>Rock Li</name>
-        <user>rock</user>
+        <name>rock li</name>
+        <user>rockli</user>
         <email>rock@php.net</email>
         <active>yes</active>
     </lead>
-    <date>2021-08-16</date>
+    <date>2021-08-22</date>
     <time>13:00:00</time>
     <version>
         <release>1.0.0</release>
@@ -28,25 +28,26 @@
     </notes>
     <contents>
         <dir name="/">
-            <file role="doc" name="CREDITS" />
             <file role="doc" name="README.md" />
+            <file role="doc" name="README-CH.md" />
             <file role="doc" name="LICENSE" />
             <file role="src" name="config.m4" />
             <file role="src" name="config.w32.without" />
-            <file role="src" name="EXPERIMENTAL" />
-            <file role="src" name="php_SeasSeasflake.h" />
+            <file role="src" name="php_SeasSnowflake.h" />
             <file role="src" name="php7_wrapper.h" />
-            <file role="src" name="SeasSeasflake.cpp" />
+            <file role="src" name="SeasSnowflake.cpp" />
+            <dir name="src">
+                <file role="src" name="IdWorker.h" />
+                <file role="src" name="Noncopyable.h" />
+                <file role="src" name="Singleton.h" />
+                <file role="src" name="Timer.h" />
+            </dir>
             <dir name="tests">
                 <file role="src" name="001.phpt" />
                 <file role="src" name="002.phpt" />
                 <file role="src" name="003.phpt" />
                 <file role="src" name="004.phpt" />
-                <dir name="bench_mark">
-                    <file role="src" name="bench_mark.php" />
-                    <file role="doc" name="README.md" />
-                    <file role="src" name="composer.json" />
-                </dir>
+                <file role="src" name="benchmark.phpt" />
             </dir>
         </dir>
     </contents>
@@ -60,7 +61,7 @@
             </pearinstaller>
         </required>
     </dependencies>
-    <providesextension>SeasSeasflake</providesextension>
+    <providesextension>SeasSnowflake</providesextension>
     <extsrcrelease/>
     <changelog>
     </changelog>
