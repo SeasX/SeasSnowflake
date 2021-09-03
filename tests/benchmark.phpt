@@ -7,7 +7,7 @@ SeasSnowflake testBenchmark
 $config=['worker_id'=>10,'datacenter_id'=>1];
 $client = new SeasSnowflake($config);
 
-echo "\nmake 100000 id=================\n";
+//echo "\nmake 100000 id=================\n";
 $start = microtime(true);
 for($i=0;$i<100000;$i++){
     $id= $client->generate();
