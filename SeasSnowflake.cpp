@@ -270,7 +270,11 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, generate)
 PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
 {
     char *id = NULL;
+#if PHP_VERSION_ID < 70000
+    int l_id = 0;
+#else
     size_t l_id = 0;
+#endif
     // zval* params = NULL;
     
     auto &idWorker = Singleton<IdWorker>::instance();
@@ -284,7 +288,7 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
     idWorker.setWorkerId(Z_LVAL_P(datacenter_id));
 
     #ifndef FAST_ZPP
-        if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|z", &id, &l_id, &params) == FAILURE)
+        if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &id, &l_id) == FAILURE)
         {
             return;
         }
@@ -309,7 +313,7 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
         uint dataCenterId=idWorker.degenerateDataCenterId(id_i);
         uint64_t beginTimestamp=idWorker.degenerateBeginTimestamp(id_i);
         uint64_t timestamp= idWorker.degenerateTimestamp(id_i);
-        zval arr;
+        zval arr, *parr = &arr;
 
         array_init(&arr);
         add_assoc_long_ex(&arr, "worker_id", strlen("worker_id"), workerId);
@@ -319,7 +323,7 @@ PHP_METHOD(SEASSNOWFLAKE_RES_NAME, degenerate)
         add_assoc_long_ex(&arr, "begin_timestamp", strlen("begin_timestamp"), beginTimestamp);
         add_assoc_long_ex(&arr, "interval", strlen("interval"), interval);
 
-        RETURN_ZVAL(&arr, 0, 1);
+        RETURN_ZVAL(parr, 0, 1);
      } catch (const std::exception& e){
          #if PHP_VERSION_ID < 80000
           sc_zend_throw_exception(NULL, e.what(), 0 TSRMLS_CC);
