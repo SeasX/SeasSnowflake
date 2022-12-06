@@ -94,6 +94,8 @@ PHP_MINIT_FUNCTION(SeasSnowflake)
     INIT_CLASS_ENTRY(SeasSnowflake, SEASSNOWFLAKE_RES_NAME, SeasSnowflake_methods);
 #if PHP_VERSION_ID >= 70000
     SeasSnowflake_ce = zend_register_internal_class_ex(&SeasSnowflake, NULL);
+    zend_declare_property_null(SeasSnowflake_ce, "worker_id", sizeof("worker_id")-1, ZEND_ACC_PUBLIC);
+    zend_declare_property_null(SeasSnowflake_ce, "datacenter_id", sizeof("datacenter_id")-1, ZEND_ACC_PUBLIC);
 #else
     SeasSnowflake_ce = zend_register_internal_class_ex(&SeasSnowflake, NULL, NULL TSRMLS_CC);
 #endif
