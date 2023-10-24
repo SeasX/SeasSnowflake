@@ -82,7 +82,7 @@ cost:1.422977 second  and memory usage: 395816byte
 
 Once built and installed, be sure to add 'seassnowflake.so' to the php.ini extensions configuration.
 
-    extension=seassnowflake.so
+    extension=SeasSnowflake.so
 
 
 ```php  
