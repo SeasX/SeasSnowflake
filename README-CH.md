@@ -123,7 +123,7 @@ cost:1.422977 second  and memory usage: 395816byte
 
 编译完后,安装seassnowflake.so  记得 在php.ini extensions configuration 开启扩展
 
-    extension=seassnowflake.so
+    extension=SeasSnowflake.so
 
 
 ```php
